@@ -11,6 +11,7 @@ import (
 func check(e error) {
 	if e != nil {
 		fmt.Printf("Error: %v", e)
+		os.Exit(0)
 	}
 }
 
@@ -37,11 +38,7 @@ func main() {
 
 	if filePtr != "" {
 		file, err := os.ReadFile(filePtr)
-		// check(err)
-		if err != nil {
-			fmt.Printf("Error: %v", err)
-			os.Exit(0)
-		}
+		check(err)
 		fmt.Print(unidecode.Unidecode(string(file)))
 	}
 
